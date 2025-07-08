@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="..\css\cart.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="..\cart.js"></script>
+
+</head>
+<body>
+    
+    <header>
+        <nav class="container">
+            <a href="..\html\home.html" class="logo">GS</a>
+            <ul class="menu">
+                <li><a href="..\html\home.html">Home</a></li>
+                <li><a href="..\html\cart.html">Cart</a></li>
+                <li><a href="#">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <h1 class="cart-title">🛒 Your Shopping Cart</h1>
+        
+        <div class="cart-wrapper">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apple</td>
+                        <td><img src="https://img.freepik.com/free-psd/close-up-apple-isolated_23-2151598148.jpg" alt="Apple"></td>
+                        <td>Rs. 100</td>
+                        <td>
+                            <button class="qty-btn">-</button>
+                            <span class="qty">1</span>
+                            <button class="qty-btn">+</button>
+                        </td>
+                        <td>Rs. 100</td>
+                        <td><button class="remove-btn">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <td>Potato</td>
+                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJx6wfmyh8dASb4Yq9CsVu6NCVXiQxgpWIUg&s" alt="Potato"></td>
+                        <td>Rs. 50</td>
+                        <td>
+                            <button class="qty-btn">-</button>
+                            <span class="qty">1</span>
+                            <button class="qty-btn">+</button>
+                        </td>
+                        <td>Rs. 50</td>
+                        <td><button class="remove-btn">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="cart-total">
+                <h3>Total: Rs. 150</h3>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#">Grocery</a></li>
+                        <li><a href="#">Popular</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Phone: +91 123456789</li>
+                        <li>Email: prateek@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

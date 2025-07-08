@@ -1,0 +1,88 @@
+<?php
+require_once '../config/db.php';
+require_once '../config/session.php';
+
+// If user is already logged in, redirect to home
+if (isLoggedIn()) {
+    header("Location: home.php");
+    exit();
+}
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    
+    // Validate input
+    if (empty($name) || empty($email) || empty($password)) {
+        $error = 'Please fill in all required fields';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Please enter a valid email address';
+    } elseif (strlen($password) < 6) {
+        $error = 'Password must be at least 6 characters long';
+    } else {
+        try {
+            // Check if email already exists
+            $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+            $stmt->execute([$email]);
+            if ($stmt->fetch()) {
+                $error = 'Email already registered';
+            } else {
+                // Hash password and insert new user
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                $stmt = $pdo->prepare("INSERT INTO users (name, email, password, phone) VALUES (?, ?, ?, ?)");
+                $stmt->execute([$name, $email, $hashed_password, $phone]);
+                
+                // Get the new user's ID
+                $user_id = $pdo->lastInsertId();
+                
+                // Set session variables
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['user_name'] = $name;
+                
+                // Redirect to home page
+                header("Location: home.php");
+                exit();
+            }
+        } catch(PDOException $e) {
+            $error = 'An error occurred. Please try again later.';
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="..\css\style.css">
+</head>
+<body>
+    <section class="signup">
+        <div class="textbox">
+            <div class="head">
+                <h1>Create Account</h1>
+                <h3>or use your E-mail ID</h3>
+            </div>
+            <?php if ($error): ?>
+                <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
+            <?php endif; ?>
+            <form method="POST" action="">
+                <input type="text" name="name" placeholder="NAME" required>
+                <input type="text" name="email" placeholder="EMAIL" required>
+                <input type="password" name="password" placeholder="PASSWORD" required>
+                <input type="text" name="phone" placeholder="PHONE NO. (optional)">
+                <button type="submit" class="sign_up_btn">SIGN UP</button>
+            </form>
+            <p class="account-text">Already have an account? 
+                <a href="signin.php">Sign In</a>
+            </p>
+        </div>
+    </section>
+    <script src="..\script.js"></script>
+</body>
+</html>

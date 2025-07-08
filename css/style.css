@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+section {
+    width: 400px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.textbox {
+    text-align: center;
+}
+
+.head h1 {
+    color: #78d98f;
+    font-weight: bold;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.head ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.head ul li {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #a09999;
+    transition: color 0.3s ease;
+}
+
+.head ul li:hover {
+    color: #78d98f;
+}
+
+.head h3 {
+    color: #888;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: #ff4444;
+    background-color: #ffebee;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+form input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 16px;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background: #eae7e7;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    font-size: 1em;
+    color: white;
+    background: #78d98f;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #9ce2ad;
+}
+
+.account-text {
+    font-size: 0.9em;
+    margin-top: 15px;
+    color: #333;
+}
+
+.account-text a {
+    color: #78d98f;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.account-text a:hover {
+    color: #4CAF50;
+    text-decoration: underline;
+}
+
+.account-text a[href*="seller"] {
+    color: #4CAF50;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: rgba(76, 175, 80, 0.1);
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.account-text a[href*="seller"]:hover {
+    background-color: rgba(76, 175, 80, 0.2);
+    text-decoration: none;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.divider span {
+    padding: 0 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.seller-signup-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.seller-signup-btn:hover {
+    background-color: #45a049;
+}
